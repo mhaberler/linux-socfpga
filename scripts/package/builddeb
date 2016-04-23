@@ -78,10 +78,11 @@ tmpdir="$objtree/debian/tmp"
 fwdir="$objtree/debian/fwtmp"
 kernel_headers_dir="$objtree/debian/hdrtmp"
 libc_headers_dir="$objtree/debian/headertmp"
-packagename=linux-image-$version
-fwpackagename=linux-firmware-image
-kernel_headers_packagename=linux-headers-$version
-libc_headers_packagename=linux-libc-dev
+packagename=linux-image-socfpga-rt
+fwpackagename=linux-firmware-image-socfpga-rt
+kernel_headers_packagename=linux-headers-socfpga-rt
+libc_headers_packagename=linux-libc-dev-rt
+dbg_packagename=$packagename-dbg
 
 if [ "$ARCH" = "um" ] ; then
 	packagename=user-mode-linux-$version
@@ -174,16 +175,16 @@ maintainer="$name <$email>"
 
 # Generate a simple changelog template
 cat <<EOF > debian/changelog
-linux-upstream ($packageversion) unstable; urgency=low
+linux-image-socfpga-rt ($packageversion) unstable; urgency=low
 
-  * Custom built Linux kernel.
+  * Altera SOCFPGA Linux kernel with rt-preempt patches.
 
  -- $maintainer  $(date -R)
 EOF
 
 # Generate copyright file
 cat <<EOF > debian/copyright
-This is a packacked upstream version of the Linux kernel.
+This is a packacked socfpga version of the Linux kernel.
 
 The sources may be found at most Linux ftp sites, including:
 ftp://ftp.kernel.org/pub/linux/kernel
@@ -203,7 +204,7 @@ EOF
 
 # Generate a control file
 cat <<EOF > debian/control
-Source: linux-upstream
+Source: linux-image-socfpga-rt
 Section: kernel
 Priority: optional
 Maintainer: $maintainer
@@ -232,7 +233,7 @@ else
 	cat <<EOF >> debian/control
 
 Package: $packagename
-Provides: linux-image, linux-image-2.6, linux-modules-$version
+Provides: linux-image, linux-image-socfpga-rt, linux-modules-rt-$version
 Suggests: $fwpackagename
 Architecture: any
 Description: Linux kernel, version $version
