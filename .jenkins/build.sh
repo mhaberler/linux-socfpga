@@ -17,7 +17,7 @@ mkdir .build
 # configure socfpga kernel
 make O=.build socfpga_defconfig
 
-KVERSION=$(make O=.build kernelversion)
+KVERSION=$(make -s O=.build kernelversion)
 
 LOCALVERSION=$(cat localversion-rt)
 SHA1SHORT=$(git rev-parse --verify --short HEAD)
