@@ -9,5 +9,5 @@ docker pull ${DOCKER_IMAGE}
 cd "$(dirname "$(readlink -f $0)")/../"
 
 # start build
-docker run -v "$(pwd)":/opt/rootfs/work ${DOCKER_IMAGE} \
+docker run --rm=true -v "$(pwd)":/opt/rootfs/work ${DOCKER_IMAGE} \
 	proot-helper /work/.jenkins/build.sh
