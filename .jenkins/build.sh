@@ -12,6 +12,7 @@ export KDEB_CHANGELOG_DIST=wheezy
 export DEBFULLNAME="Michael Haberler"
 export DEBEMAIL="haberlerm@gmail.com"
 
+rm -rf .build || true
 mkdir .build
 
 # configure socfpga kernel
