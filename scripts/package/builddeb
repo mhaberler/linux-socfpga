@@ -84,7 +84,7 @@ dbg_dir="$objtree/debian/dbgtmp"
 packagename=linux-image-socfpga-rt
 fwpackagename=linux-firmware-image-socfpga-rt
 kernel_headers_packagename=linux-headers-socfpga-rt
-libc_headers_packagename=linux-libc-dev-rt
+libc_headers_packagename=linux-libc-dev-socfpga-rt
 dbg_packagename=$packagename-dbg
 
 if [ "$ARCH" = "um" ] ; then
